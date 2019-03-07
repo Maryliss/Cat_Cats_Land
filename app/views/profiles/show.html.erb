@@ -1,0 +1,45 @@
+<!-- jumbotron-->
+<div class="page-title d-flex" aria-label="Page title" style="background-image: url(img/page-title/shop-pattern.jpg);">
+      <div class="container text-left align-self-center">
+        <nav aria-label="breadcrumb">
+
+        </nav>
+        <h1 class="page-title-heading">Mon profil</h1>
+      </div>
+    </div>
+    
+    <div class="container mb-4">
+      <div class="row">
+        <div class="col-lg-4 pb-5">
+          <!-- Account Sidebar-->
+          <div class="author-card pb-3">
+            <div class="author-card-cover"><%= image_tag  "cat_background.png"%></div>
+            
+            <div class="author-card-profile">
+            <i class="fas fa-user-circle fa-7x"></i>
+              <div class="author-card-details">
+                <h5 class="author-card-name text-lg"><%= @user.first_name %> <%= @user.last_name %></h5><span class="author-card-position">Depuis le <%= @user.created_at.strftime("%d %B %Y") %></span>
+              </div>
+            </div>
+          </div>
+          <div class="wizard">
+            <nav class="list-group list-group-flush"><%= link_to(profiles_path, remote: true, class: "list-group-item")  do %>
+                      <i class="fas fa-user text-muted"></i>Informations Profil
+                      <% end %>
+                <div class="d-flex justify-content-between align-items-center">
+
+                </div></a><%=link_to(profiles_path, method: :post, class: "list-group-item", remote: true) do %>
+                <i class="fas fa-shopping-bag text-muted"></i>Mes Commande(s)
+                <%end%>
+                </nav>
+          </div>
+        </div>
+        <!-- Profile Settings-->
+        <div class="col-lg-8 pb-5" id="tab">
+          <%= render 'users_info', user: @user %>
+        </div>
+        
+      
+
+      </div>
+    </div>

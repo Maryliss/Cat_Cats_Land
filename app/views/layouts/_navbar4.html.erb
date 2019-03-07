@@ -1,0 +1,54 @@
+
+    <!-- Navbar: Default-->
+    <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+    <header class="navbar-wrapper">
+      <div class="d-table-cell align-middle pr-md-3"><a class="navbar-brand mr-1" href="<%= root_path %>">Cats-Cats-Land</a></div>
+      <div class="d-table-cell w-100 align-middle pl-md-3 ">
+        
+        <div class="navbar justify-content-end justify-content-lg-between">
+          <!-- Search-->
+          <form class="search-box" method="get">
+            <input type="text" id="site-search" placeholder="Taper votre recherche ici"><span class="search-close"><i class="fe-icon-x"></i></span>
+          </form>
+          <!-- Main Menu-->
+          <ul class="navbar-nav d-none d-lg-block">
+          
+            <!-- Home-->
+            <li class="nav-item mega-dropdown-toggle"><a class="nav-link" href="<%=items_path%>"> Les produits</a>
+
+            </li>
+           
+            <% if current_user %>
+            <!-- Account-->
+            <li class="nav-item dropdown-toggle"><a class="nav-link" href="<%=profile_path(current_user)%>"> Mon espace perso</a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-item"><%= link_to "Mon profile", profile_path(current_user)%></li>
+                <li class="dropdown-item"><a href="#">Mes commandes</a></li>
+                <li class="dropdown-item"><a href="<%= edit_user_registration_path %>">Paramètres</a></li>
+              </ul>
+            </li>
+          </ul>
+        
+          <div>
+
+          <ul class="navbar-buttons d-inline-block align-middle mr-lg-2">
+              <li class="d-block d-lg-none"><a href="#mobile-menu" data-toggle="offcanvas"><i class="fe-icon-menu"></i></a></li>
+              <li> <%= link_to(carts_path, data: {toggle: "offcanvas"}) do %>
+                <i class="fas fa-shopping-cart"></i>
+                <span class="badge badge-danger"></span>
+               <% end %>
+               <%end%>
+              </li>
+          </ul>
+          <% if current_user%>
+          <!-- Components-->
+            <%= link_to "Se déconnecter",  destroy_user_session_path, method: :delete, class:"btn btn-gradient ml-3 d-none d-xl-inline-block" %></li>
+          <%else%>
+            <a class="btn btn-gradient ml-3 d-none d-xl-inline-block" href="<%= new_user_session_path %>" >Me connecter</a>
+          <%end%>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
